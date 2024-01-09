@@ -2,29 +2,35 @@
 
 declare(strict_types=1);
 
-$basket = [
-    ["category" => "Fruit", "name" => "banana", "price" => 1, "quantity" => 4],
-    ["category" => "Fruit", "name" => "apple", "price" => 1.5, "quantity" => 3],
-    ["category" => "Drinks", "name" => "bottle of wine", "price" => 10, "quantity" => 2]
-];
+// // NO CLASSES
+// $basket = [
+//     ["category" => "Fruit", "name" => "banana", "price" => 1, "quantity" => 4, "tax" => 0.06],
+//     ["category" => "Fruit", "name" => "apple", "price" => 1.5, "quantity" => 3, "tax" => 0.06],
+//     ["category" => "Drinks", "name" => "bottle of wine", "price" => 10, "quantity" => 2, "tax" => 0.21]
+// ];
 
-function generateCart() {
-    $cartTotal = 0;
-    foreach ($basket as $item) {
-        echo $item['name'] . ' x' . $item['quantity'];
-        $itemTotal = $item['quantity']*$item['price'];
-        echo "Item Total = €" . $itemTotal;
-        $cartTotal += $itemTotal;
-    }
-};
+// function generateCart($basket) {
+//     $cartTotal = 0;
+//     foreach ($basket as $item) {
+//         echo "<p>" . $item['name'] . ' x' . $item['quantity'] . "</p>";
+//         $itemTotal = $item['quantity']*$item['price'];
+//         echo "<p>Item total = €" . $itemTotal . "</p>";
+//         echo "<p>Tax = €" . $itemTotal*$item['tax'] . "</p>";
+//         $cartTotal += $itemTotal;
+//         echo "<hr>";
+//     }
+//     echo "<h1>Cart total: €" . $cartTotal . "</h1>";
+// };
 
-generateCart($basket);
+// generateCart($basket);
 
+// WITH CLASSES
+require_once "./classes/items.php";
 
-// require_once "./classes/fruits.php";
-
-// $fruit1 = new Fruit("banana", 1);
-// $fruit2 = new Fruit("apple", 1.5);
-// $drink1 = new Drink("bottle of wine", 1O);
+$item1 = new Items("food", "banana", 1, 4);
+$item2 = new Items("food", "apple", 1.5, 3);
+$item3 = new Items("drinks", "bottle of wine", 10, 2);
+$items = [$item1, $item2, $item3];
+$cartTotal = 0;
 
 require "view.php";
