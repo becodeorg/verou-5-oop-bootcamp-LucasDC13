@@ -32,5 +32,7 @@ $item2 = new Items("food", "apple", 1.5, 3);
 $item3 = new Items("drinks", "bottle of wine", 10, 2);
 $items = [$item1, $item2, $item3];
 $cartTotal = 0;
+$tax;
+$priceMod;
 
 require "view.php";

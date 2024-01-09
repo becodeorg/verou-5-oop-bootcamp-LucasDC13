@@ -8,17 +8,19 @@
 <body>
     <h1>Order:</h1>
     <?php foreach ($items as $item): ?>
-    <?php $itemTotal = $item->getQuantity() * $item->getPrice(); ?>
-    <p><?= $item->getQuantity() . "x " . $item->getName() . " totals: €" . $itemTotal; ?></p>
-    <p><?php $tax;
-        if ($item->getCategory() === 'food') {
+        <?php if ($item->getCategory() === 'food') {
             $tax = 0.06;
+            $priceMod = 0.5;
+            echo "<p><strong>Fruit discount applied!</strong></p>";
         } else if ($item->getCategory() === 'drinks') {
             $tax = 0.21;
+            $priceMod = 1;
         }
+        $itemTotal = $item->getQuantity() * $item->getPrice() * $priceMod;
+        echo "<p>" . $item->getQuantity() . "x " . $item->getName() . " totals: €" . $itemTotal . "</p>";
         echo "<p> Item tax = €" . $itemTotal*$tax . "</p>";
-    $cartTotal += $itemTotal; ?>
-    <hr>
+        $cartTotal += $itemTotal; ?>
+        <hr>
     <?php endforeach; 
     echo "<h2> Total: €" . $cartTotal;
     ?>
