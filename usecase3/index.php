@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once "./classes/content.php";
+
 $content1 = new Content("article", "Detachable Penis Missing - Man Flabbergasted!", 
 "I woke up this morning with a bad hangover<br>
 And my penis was missing again.<br>
@@ -27,7 +28,8 @@ I was starting to get desperate.<br>
 I really don't like being without my penis for too long.<br>
 It makes me feel like less of a man,<br>
 And I really hate having to sit down every time I take a leak.<br>",
-false);
+true);
+
 $content2 = new Content("article", "Man Finds Missing Genitals", 
 "After a few hours of searching the house,<br>
 And calling everyone I could think of,<br>
@@ -47,15 +49,18 @@ But I don't know.<br>
 Even though sometimes it's a pain in the ass,<br>
 I like having a detachable penis.",
 false);
+
 $content3 = new Content("ad", "For Sale: Detachable Penis", 
 "Found at the Pub<br>
 Condition: used<br>
 Price: $22",
 false);
+
 $content4 = new Content("vacancy", "Wanted - Stripper of Ambiguous Sex",
 "Currently hiring a stripper of ambiguous sex to work shifts on regular evenings and the occasional Gay Cowboy Friday.<br>
 No need for resumes, just come by for an introductory meeting and a physical inspection.",
 false);
+
 $allContent = [$content1, $content2, $content3, $content4];
 ?>
 
@@ -64,7 +69,7 @@ $allContent = [$content1, $content2, $content3, $content4];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drinks</title>
+    <title>DISTINGUISHED NEWS OUTLET</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -73,6 +78,9 @@ $allContent = [$content1, $content2, $content3, $content4];
         <?php switch ($content->getType()) {
             case "article":
                 $newTitle = $content->getTitle();
+                if ($content->getBreaking() === true) {
+                $newTitle = "BREAKING: " . $newTitle;
+                }
                 break;
             case "ad":
                 $newTitle = strtoupper($content->getTitle());

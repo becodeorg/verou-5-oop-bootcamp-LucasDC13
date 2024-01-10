@@ -13,7 +13,7 @@ class Content
         $this->type = $type;
         $this->title = $title;
         $this->text = $text;
-        $this->isBreaking = "false";
+        $this->isBreaking = $isBreaking;
     }
 
     // Methods
@@ -26,8 +26,11 @@ class Content
     public function getText () {
         return $this->text;
     }
+    public function getBreaking () {
+        return $this->isBreaking;
+    }
     public function setBreaking () {
-        $this->isBreaking = "true";
+        $this->isBreaking = true;
         return $this->isBreaking;
     }
 }
