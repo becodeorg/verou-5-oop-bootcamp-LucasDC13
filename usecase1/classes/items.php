@@ -2,10 +2,10 @@
 class Items
 {
     // Properties
-    protected $category;
-    protected $name;
-    protected $price;
-    protected $quantity;
+    private $category;
+    private $name;
+    private $price;
+    private $quantity;
 
     // Constructor 
     public function __construct(string $category, string $name, float $price, int $quantity)
@@ -28,8 +28,5 @@ class Items
     }
     public function getQuantity () {
         return $this->quantity;
-    }
-    public function getInfo () {
-        return "A(n) $this->name costs €$this->price apiece. You've ordered $this->quantity.";
     }
 }
