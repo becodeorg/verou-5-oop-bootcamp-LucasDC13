@@ -1,7 +1,7 @@
 <?php 
 class Items
 {
-    // Properties
+    // Properties   
     private $category;
     private $name;
     private $price;
